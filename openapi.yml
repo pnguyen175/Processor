@@ -1,0 +1,40 @@
+swagger: '2.0'
+info:
+  description: This is a sample Warehouse server. It will store Company information and their orders
+  version: 1.0.0
+  title: Warehouse
+
+paths:
+  /reading/stats:
+    get:
+      summary: get stats
+      operationId: app.get_company_stat
+      description: retrieves all stats
+      produces:
+      - application/json
+      responses:
+        200:
+          description: search completed
+          schema:
+            $ref: '#/definitions/ReadingStats'
+        400:
+          description: bad input parameter
+
+definitions:
+  ReadingStats:
+    type: object
+    required:
+    - num_companies
+    - num_total_orders
+    - timestamp
+    properties:
+      num_companies:
+        type: integer
+        example: 123
+      num_total_orders:
+        type: integer
+        example: 132
+      timestamp:
+        type: string
+        format: date-time
+        example: 2020-01-12:12:00:00
